@@ -5,9 +5,6 @@ import { defineConfig } from "vite";
 export default defineConfig({
   build: {
     outDir: "dist",
-    rollupOptions: {
-      external: ['buffer'],
-    },
   },
   server: {
     open: true,
@@ -24,11 +21,10 @@ export default defineConfig({
       util: 'util',
     },
   },
+  define: {
+    global: 'globalThis',
+  },
   optimizeDeps: {
-    esbuildOptions: {
-      define: {
-        global: 'globalThis',
-      },
-    },
+    include: ['buffer'],
   },
 });
